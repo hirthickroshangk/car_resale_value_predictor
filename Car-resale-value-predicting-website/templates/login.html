@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Apply animations */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+    
+    <!-- Header -->
+    <h1 class="text-3xl font-extrabold text-white mb-8 fade-in">
+        🚗 Car Resale Value Prediction Using ML
+    </h1>
+
+    <!-- Login Box -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center w-96 slide-up">
+        <h2 class="text-2xl font-bold mb-4">🔒 Login</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" class="w-full p-2 border rounded mb-2" required>
+            <input type="password" name="password" placeholder="Password" class="w-full p-2 border rounded mb-4" required>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-transform transform hover:scale-105">
+                🚀 Login
+            </button>
+        </form>
+        {% if error %} 
+            <p class="text-red-500 mt-2">{{ error }}</p> 
+        {% endif %}
+    </div>
+
+</body>
+</html>

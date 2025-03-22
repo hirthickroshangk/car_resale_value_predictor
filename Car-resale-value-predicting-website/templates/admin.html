@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Apply animations */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+
+        /* Table Hover Effect */
+        .hover-row:hover {
+            background-color: rgba(0, 0, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+    
+    <!-- Header -->
+    <h1 class="text-3xl font-extrabold text-white mb-6 fade-in">
+        📊 Admin Dashboard
+    </h1>
+
+    <div class="bg-white shadow-lg rounded-lg p-6 w-11/12 max-w-4xl slide-up">
+        
+        <!-- Login History -->
+        <h3 class="text-xl font-semibold mt-4">🟢 Login History</h3>
+        <table class="w-full border-collapse border border-gray-300 mt-2">
+            <tr class="bg-gray-200">
+                <th class="border p-2">ID</th>
+                <th class="border p-2">Username</th>
+                <th class="border p-2">Timestamp</th>
+            </tr>
+            {% for entry in login_history %}
+            <tr class="text-center hover-row">
+                <td class="border p-2">{{ loop.index }}</td>
+                <td class="border p-2">{{ entry['Username'] }}</td>
+                <td class="border p-2">{{ entry['Timestamp'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Prediction History -->
+        <h3 class="text-xl font-semibold mt-6">🔵 Prediction History</h3>
+        <table class="w-full border-collapse border border-gray-300 mt-2">
+            <tr class="bg-gray-200">
+                <th class="border p-2">ID</th>
+                <th class="border p-2">Username</th>
+                <th class="border p-2">Car Brand</th>
+                <th class="border p-2">Predicted Price (₹)</th>
+                <th class="border p-2">Timestamp</th>
+            </tr>
+            {% for entry in prediction_history %}
+            <tr class="text-center hover-row">
+                <td class="border p-2">{{ loop.index }}</td>
+                <td class="border p-2">{{ entry['Username'] }}</td>
+                <td class="border p-2">{{ entry['Brand'] }}</td>
+                <td class="border p-2 text-green-600 font-bold">₹{{ entry['Predicted Price'] }}</td>
+                <td class="border p-2">{{ entry['Timestamp'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Logout Button -->
+        <a href="{{ url_for('logout') }}" class="block mt-4 bg-red-500 text-white text-center py-2 px-4 rounded hover:bg-red-600 transition-transform transform hover:scale-105">
+            🚪 Logout
+        </a>
+    </div>
+
+</body> 
+</html>

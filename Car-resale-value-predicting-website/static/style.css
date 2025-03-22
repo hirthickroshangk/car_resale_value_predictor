@@ -1,0 +1,107 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background Animation */
+body {
+    background: linear-gradient(120deg, #00c6ff, #0072ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Card Container */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Styling */
+input, select, button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* Button Styling */
+button {
+    background: #007BFF;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Animated Title */
+.animate-title {
+    font-size: 24px;
+    font-weight: bold;
+    animation: titleBounce 1.5s infinite alternate;
+}
+
+@keyframes titleBounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #007BFF;
+    color: white;
+}
+
+/* Logout Link */
+.logout-btn {
+    display: inline-block;
+    margin-top: 15px;
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+    color: darkred;
+}

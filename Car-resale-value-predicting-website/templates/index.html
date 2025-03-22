@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Resale Value Prediction Using ML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gradient-to-r from-blue-400 to-purple-500 opacity-0">
+    <div class="bg-white shadow-md rounded-lg p-6 text-center w-96 animate-fadeIn">
+        <h2 class="text-2xl font-bold mb-4 animate-title">🚗 Car Resale Value Prediction Using ML</h2>
+        <p class="text-gray-600">Make accurate car resale predictions using Machine Learning!</p>
+        <a href="{{ url_for('login') }}" class="block mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-transform transform hover:scale-105">🔑 Login</a>
+    </div>
+</body>
+</html>

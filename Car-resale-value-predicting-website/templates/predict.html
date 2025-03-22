@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Resale Value Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Prediction Result Animation */
+        @keyframes highlight {
+            0% { background-color: #f8ffea; }
+            100% { background-color: transparent; }
+        }
+
+        /* Apply animations */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+
+        .highlight {
+            animation: highlight 1.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+    
+    <!-- Header -->
+    <h1 class="text-3xl font-extrabold text-white mb-6 fade-in">
+        🚗 Car Resale Value Prediction Using ML
+    </h1>
+
+    <!-- Prediction Form -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center w-96 slide-up">
+        <h2 class="text-2xl font-bold mb-4">📊 Predict Your Car’s Resale Value</h2>
+        <form method="POST">
+            <label for="brand">Car Brand:</label>
+            <select name="brand" class="w-full p-2 border rounded mb-2">
+                {% for brand in brands %}
+                <option value="{{ brand }}">{{ brand }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="fuel_type">Fuel Type:</label>
+            <select name="fuel_type" class="w-full p-2 border rounded mb-2">
+                {% for fuel in fuel_types %}
+                <option value="{{ fuel }}">{{ fuel }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="number" name="age" placeholder="Car Age" class="w-full p-2 border rounded mb-2" required>
+            <input type="number" name="kilometers" placeholder="Driven Kilometers" class="w-full p-2 border rounded mb-2" required>
+            <input type="number" name="owners" placeholder="Number of Owners" class="w-full p-2 border rounded mb-2" required>
+            <input type="number" name="condition" placeholder="Condition Score" class="w-full p-2 border rounded mb-2" required>
+            <input type="number" name="original_price" placeholder="Original Buying Price" class="w-full p-2 border rounded mb-4" required>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-transform transform hover:scale-105">
+                🎯 Predict
+            </button>
+        </form>
+        
+        {% if predicted_price is not none %}
+        <p class="mt-4 text-lg font-bold text-green-600 highlight">
+            📌 Predicted Resale Price: ₹{{ predicted_price }}
+        </p>
+        {% endif %}
+        
+        <a href="{{ url_for('logout') }}" class="block mt-4 text-red-500">Logout</a>
+    </div>
+
+</body>
+</html>
